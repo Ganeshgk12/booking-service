@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -18,13 +17,19 @@ public class BookingController {
     @Autowired
     private BookingService bookingService;
 
-    @PostMapping("/booking")
-    public ResponseEntity<String> createBooking(@RequestBody BookingRequest bookingRequest, HttpSession session) {
-        return bookingService.addBooking(bookingRequest, session);
-    }
-
     @GetMapping("/todayBookings")
     public ResponseEntity<List<Booking>> getTodayBookings(){
         return bookingService.getAllTodayBookings();
     }
+
+    @PostMapping("/cancelBooking")
+    public ResponseEntity<String> cancelBooking(@RequestParam Long bookingId) {
+        return bookingService.cancelBooking(bookingId);
+    }
+
+    @PostMapping("/confirmBooking")
+    public ResponseEntity<String> confirmBooking(@RequestBody BookingRequest bookingRequest, @RequestParam Long reservationId) {
+        return bookingService.confirmBooking(bookingRequest, reservationId);
+    }
+
 }

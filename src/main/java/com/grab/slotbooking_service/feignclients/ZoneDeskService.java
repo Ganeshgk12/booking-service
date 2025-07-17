@@ -2,10 +2,7 @@ package com.grab.slotbooking_service.feignclients;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @FeignClient(name = "ZONE-DESK-SERVICE")
 public interface ZoneDeskService {
@@ -15,6 +12,9 @@ public interface ZoneDeskService {
     @GetMapping("api/data/check-desk/{deskId}")
     ResponseEntity<Boolean> checkDesk(@PathVariable("deskId") Long deskId);
 
-    @PostMapping("api/data/changeDeskStatus")
+    @PutMapping("api/data/changeDeskStatus")
     ResponseEntity<String> changeDeskStatus(@RequestParam("deskId") Long deskId, @RequestParam String status);
+
+    @PutMapping("api/data/change-all-desk-status-available")
+    ResponseEntity<String> changeAllDeskStatusAvailable();
 }

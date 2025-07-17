@@ -1,7 +1,8 @@
-package com.grab.slotbooking_service.services;
+package com.grab.slotbooking_service.services.Implementations;
 
 import com.grab.slotbooking_service.models.Booking;
 import com.grab.slotbooking_service.repositories.BookingRepository;
+import com.grab.slotbooking_service.services.BookingDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

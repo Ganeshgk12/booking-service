@@ -17,7 +17,9 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults());
         http.authorizeHttpRequests(authorizeRequests -> authorizeRequests
                 .requestMatchers("/api-booking/slot/booking").permitAll()
-                .requestMatchers("api-booking/slot/todayBookings").permitAll());
+                .requestMatchers("api-booking/slot/todayBookings").permitAll()
+                .requestMatchers("/api-booking/data/checkuser-todaybooking").permitAll()
+                .anyRequest().permitAll());
         http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         return http.build();
     }
