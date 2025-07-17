@@ -7,11 +7,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
+
 @Service
 public interface BookingService {
 
-    ResponseEntity<String> addBooking(BookingRequest bookingRequest, HttpSession session);
     ResponseEntity<List<Booking>> userAllBookings(Long userId);
     ResponseEntity<Booking> getBookingById(Long id);
     ResponseEntity<List<Booking>> getAllTodayBookings();
+
+    ResponseEntity<String> cancelBooking(Long bookingId);
+
+    ResponseEntity<String> confirmBooking(BookingRequest bookingRequest, Long reservationId);
 }
